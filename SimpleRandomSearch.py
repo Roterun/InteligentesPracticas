@@ -44,7 +44,7 @@ class SimpleRandomSearch:
 			self.m_piece = Rook(0)
 		elif s0.m_agent == Utils.bRook:
 			self.m_piece = Rook(1)
-        elif s0.m_agent == Utils.wBishop:
+        	elif s0.m_agent == Utils.wBishop:
 			self.m_piece = Bishop(0)
 		elif s0.m_agent == Utils.bBishop:
 			self.m_piece = Bishop(1)
@@ -52,7 +52,7 @@ class SimpleRandomSearch:
 			self.m_piece = Knight(0)
 		elif s0.m_agent == Utils.bKnight:
 			self.m_piece = Knight(1)
-        elif s0.m_agent == Utils.wQueen:
+        	elif s0.m_agent == Utils.wQueen:
 			self.m_piece = Queen(0)
 		elif s0.m_agent == Utils.bQueen:
 			self.m_piece = Queen(1)
