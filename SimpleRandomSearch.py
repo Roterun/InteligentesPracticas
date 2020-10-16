@@ -16,23 +16,27 @@ from State import State
 from Piece import Piece
 from Rook import Rook
 from Pawn import Pawn
+from Bishop import Bishop
+from Knight import Knight
+from Queen import Queen
+from King import King
 
 class SimpleRandomSearch:
-	# member variables
+	#member variables
 	m_initialState = None
 	m_seedRS = -1
-	#Random m_generator = null;
-	#m_solution = None
+#	Random m_generator = null;
+	m_solution = None
 
 	m_cost = 0.0
 	m_piece = Piece()
 	m_finalState = None
-	
+
 	# constructor
 	def __init__(self, s0, seed):
 		self.m_initialState = s0
 		self.m_seedRS = seed
-		#m_generator = new Random(m_seedRS);
+#		m_generator = new Random(m_seedRS);
 		self.m_cost = 0.0
 		random.seed(seed)
 
@@ -44,7 +48,7 @@ class SimpleRandomSearch:
 			self.m_piece = Rook(0)
 		elif s0.m_agent == Utils.bRook:
 			self.m_piece = Rook(1)
-        elif s0.m_agent == Utils.wBishop:
+		elif s0.m_agent == Utils.wBishop:
 			self.m_piece = Bishop(0)
 		elif s0.m_agent == Utils.bBishop:
 			self.m_piece = Bishop(1)
@@ -52,7 +56,7 @@ class SimpleRandomSearch:
 			self.m_piece = Knight(0)
 		elif s0.m_agent == Utils.bKnight:
 			self.m_piece = Knight(1)
-        elif s0.m_agent == Utils.wQueen:
+		elif s0.m_agent == Utils.wQueen:
 			self.m_piece = Queen(0)
 		elif s0.m_agent == Utils.bQueen:
 			self.m_piece = Queen(1)
@@ -70,11 +74,11 @@ class SimpleRandomSearch:
 
 		self.m_solution = []
 		solutionFound = False
-		#current = None
+		current = None
 		noSolution = False
 
 		# main loop
-		current = self.m_initialState.copy() 
+		current = self.m_initialState.copy()
 		while not(solutionFound):
 			if current.isFinal(): # first we check if the state is final
 				solutionFound = True
@@ -82,26 +86,26 @@ class SimpleRandomSearch:
 			else:
 				# generate successors
 				possibleActions = self.m_piece.getPossibleActions(current)
-				#for a in possibleActions:
-				#	print (a.m_initPos, a.m_finalPos)
-				#rnd = random.randint(0,len(possibleActions)-1)
-				#print(len(possibleActions), rnd)
+				for a in possibleActions:
+					print (a.m_initPos, a.m_finalPos)
+				rnd = random.randint(0,len(possibleActions)-1)
+				print(len(possibleActions), rnd)
 				if len(possibleActions) == 0:
 					break
 				action = possibleActions[random.randint(0,len(possibleActions)-1)]
-				#print(action.m_initPos, action.m_finalPos)
+				print(action.m_initPos, action.m_finalPos)
 				self.m_solution.append(action)
 				self.m_cost += action.getCost()
 				current = current.applyAction(action)
 
 		return current
-	
-	
+
+
 # main method
 
 
 if __name__ == '__main__':
-	#print(len(sys.argv))
+	print(len(sys.argv))
 
 	if (len(sys.argv) != 6):
 		print("\n**Sorry, correct usage require 5 params:");
@@ -125,12 +129,12 @@ if __name__ == '__main__':
 		if density<0.1 or density>1.0:
 			print("\nSorry: bad density value, modified to 0.25")
 			density = 0.25
-		
+
 		if density*32 > size*size:
 			print("\nSorry: too much pieces for the board size, modifying density to 0.25")
 			density=0.25
 
-		if agent <0 or agent>11:
+		if agent <0 or agent>5:
 			print("\nSorry: bad selected agent, modified to 1 (white rook)")
 			agent = Utils.wRook
 

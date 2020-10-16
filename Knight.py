@@ -24,5 +24,5 @@ class Knight(Piece):
 		l += self.getKnightLeftDownMoves(state)
 		l += self.getKnightRightUpMoves(state)
 		
-		return l# -*- coding: utf-8 -*-
+		return l
 

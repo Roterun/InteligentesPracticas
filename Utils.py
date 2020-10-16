@@ -5,14 +5,14 @@
 import sys
 import random
 from Position import Position
-from State import State
+import State
 
 
 # all the pieces
 wPawn = 0
 wRook = 1
 wBishop = 2
-wKnight = 3
+wKnight = 33
 wQueen = 4
 wKing = 5
 bPawn = 6
@@ -65,7 +65,7 @@ def getProblemInstance(n, p, seed, agent):
    r = random.randint(0,n-1)
    agentPos = allPositions.pop(r)
    board[agentPos.row][agentPos.col] = agent
-		
+
    # placing the rest of pieces
    pos = None
    for piece in range(diffPieces):
@@ -74,21 +74,21 @@ def getProblemInstance(n, p, seed, agent):
       		r = random.randint(0,len(allPositions)-1)
       		pos = allPositions.pop(r)
       		board[pos.row][pos.col] = piece
-		
+
    # Creating the instance, i.e., the state
-   return State(board, agentPos, agent)
+   return State.State(board, agentPos, agent)
 
 
 
 #
 # fill (by rows) an ArrayList with all the possible coordinates
-# 
+#
 # @param n size of the board
 #
 
 def getAllBoardPositions(n):
 	return [Position(r,c) for r in range(n) for c in range(n)]
-	
+
 
 #
 # Print a state (board + agent)
@@ -115,14 +115,14 @@ def printBoard(state):
 	# board
 	for r in range(size):
 		print("% 2d|" % (r), end="")
-		for c in range(size): 
+		for c in range(size):
 			if ((r==state.m_agentPos.row) and (c==state.m_agentPos.col)):
 				print("*" + letters[state.m_board[r][c]]+"|", end="")
 			else:
 				print(" " + letters[state.m_board[r][c]]+"|", end="")
 		# botton row
 		print("  ")
-		for c in range(size): 
+		for c in range(size):
 			print("---", end="")
 		print("--")
 
@@ -134,5 +134,5 @@ if __name__ == '__main__':
 
 	st = getProblemInstance(8, 1.0, 1771, wRook)
 	print(st.m_board)
-		
+
 	printBoard(st)

@@ -19,7 +19,7 @@ class Bishop(Piece):
 	def getPossibleActions(self, state):
 		l = []
 		
-		l = self.getDiagonalLefUptMoves(state)
+		l = self.getDiagonalLeftUpMoves(state)
 		l += self.getDiagonalRightDownMoves(state)
 		l += self.getDiagonalLeftDownMoves(state)
 		l += self.getDiagonalRightUpMoves(state)
