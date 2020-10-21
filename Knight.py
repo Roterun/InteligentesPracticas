@@ -19,7 +19,7 @@ class Knight(Piece):
 	def getPossibleActions(self, state):
 		l = []
 		
-		l = self.getKnightLefUptMoves(state)
+		l = self.getKnightLeftUpMoves(state)
 		l += self.getKnightRightDownMoves(state)
 		l += self.getKnightLeftDownMoves(state)
 		l += self.getKnightRightUpMoves(state)

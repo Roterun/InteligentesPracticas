@@ -5,7 +5,7 @@
 import Utils
 from Position import Position
 from Action import Action
-from State import State
+
 
 class Piece:
 	# this method must be completed with all the possible pieces
