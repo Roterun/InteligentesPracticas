@@ -5,26 +5,27 @@ from Action import Action
 
 # this class implements the getPossibleActions for each type of piece
 
-class Pawn(Piece):
-
+class Pawn(Piece): 
+	
 	# constructor
 	def __init__(self, color):
 		self.m_color = color
-
-		if color==0:
-			self.m_type = Utils.wRook
+		
+		if color==0: 
+			self.m_type = Utils.wPawn
 		else:
-			self.m_type = Utils.bRook
+			self.m_type = Utils.bPawn
 
-
-	# this method must be completed with all the possible pieces
+	
+	# this method must be completed with all the possible pieces	
 	def getPossibleActions(self, state):
-
+		
 		r = state.m_agentPos.row
 		c = state.m_agentPos.col
-
+		action = None
+		
 		l = []
-
+		
 		oponent_color = -1
 		if self.m_color == 0: # white pawn
 			oponent_color = 1
